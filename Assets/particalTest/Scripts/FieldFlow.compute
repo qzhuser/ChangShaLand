@@ -1,0 +1,39 @@
+﻿// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel MyCompute
+#include "SimplexNoise3D.hlsl"
+struct ParticalPos{
+    float3 startPos;
+    float3 pos;
+    float lifetime;
+};
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+RWStructuredBuffer<ParticalPos> Result;
+int trailCount;
+float _NoiseFrequency;
+float _NoiseAbs;
+float _NoisePower;
+float2 _ParticalSpeed;
+float time;
+float deltaTime;
+float3 noiseSpeed;
+
+[numthreads(1024,1,1)]
+void MyCompute(uint3 id : SV_DispatchThreadID)
+{
+    ParticalPos ParPos;
+    if(id.x<trailCount){
+        ParPos = Result[id.x];
+        ParPos.lifetime-=deltaTime;
+        if(ParPos.lifetime>0){
+            ParPos.pos.xz+=_ParticalSpeed;
+            
+            float3 offset=noiseSpeed*time;
+            float noise=snoise((ParPos.pos+offset)*_NoiseFrequency);
+            float noise1=(noise+1.0)/2.0;
+            float noiseRemap=lerp(noise,noise1,_NoiseAbs);
+            ParPos.pos.y=noise*_NoisePower;
+        }
+    }
+    Result[id.x]=ParPos;
+}
