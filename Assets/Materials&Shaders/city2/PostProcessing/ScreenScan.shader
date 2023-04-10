@@ -162,7 +162,7 @@
                 half percent=1;
                 float3 worldPos=_WorldSpaceCameraPos+depthValue* i.interpolatedRay.xyz;
                 float dis=distance(worldPos,center);
-                float curVal = frac(_Time.y*_Speed);
+                float curVal = frac(dis*0.03-_Time.y*_Speed);
                 float _Range=_RangeMin+_RangeMax*curVal;
                 if(_Range-dis>0&&depthValue<1&&depthValue>0){
                     percent=saturate((_Range-dis)/_DepthWidth);//越靠近0 越在圆的最边缘

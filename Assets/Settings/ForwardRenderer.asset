@@ -53,8 +53,8 @@ MonoBehaviour:
   Event: 500
   settings:
     outLineMaterial: {fileID: 2100000, guid: 5e0918b727a6be94fbb1866b4b49ce8d, type: 2}
-    LineWidth: 10
-    speed: 0.08
+    LineWidth: 14.1
+    speed: 0.1
     textureId: _ScreenTex
     rangeMin: 0
     rangeMax: 120

@@ -28,10 +28,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _DepthWidth: 10
+    - _DepthWidth: 14.1
     - _Range: 78.4
     - _RangeMax: 120
     - _RangeMin: 0
-    - _Speed: 0.08
+    - _Speed: 0.1
     m_Colors:
     - _Color: {r: 93.01205, g: 60.38478, b: 37.01003, a: 1}

@@ -10,7 +10,7 @@ public class DepthOutLine : ScriptableRendererFeature
     public class OutLineSettings {
 
         public Material outLineMaterial = null;
-        [Range(0.0f,10.0f)]
+        [Range(0.0f,20.0f)]
         public float LineWidth=1.0f;
         public float speed=1.0f;
         //public float range

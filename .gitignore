@@ -1,0 +1,8 @@
+Library
+obj
+Packages
+buildPC
+*.zip
+*.sln
+*.vsconfig
+*.csproj
